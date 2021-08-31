@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: django
-          image: "kube-django-tutorial1/django:v1"
+          image: "kube-django-tutorial1:v1"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
