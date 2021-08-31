@@ -9,4 +9,7 @@ WORKDIR /home/python/app
 RUN useradd -u 1000 -o python && \
     chown -R python:python /home/python
 
+COPY . .
+EXPOSE 8000/tcp
+
 CMD [ "python","/home/python/app/manage.py","runserver","0:8000"]
