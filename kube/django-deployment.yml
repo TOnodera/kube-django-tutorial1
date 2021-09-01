@@ -14,8 +14,23 @@ spec:
     spec:
       containers:
         - name: django
-          image: "kube-django-tutorial1:v1"
+          image: kube-django-tutorial1:v1
           imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              memory: 1Gi
+              cpu: "2"
+            requests:
+              memory: 512Mi
+              cpu: "0.4"
+          env:
+          - name: DB_HOST
+            value: django-mysql55
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-pass
+                key: password
           ports:
             - containerPort: 8000
               name: django
