@@ -1,7 +1,8 @@
 secretGenerator:
   - name: mysql-pass
     literals:
-      - password=password
+      - password=django
 resources:
   - django-deployment.yml
   - mysql-deployment.yml
+  - configmap.yml

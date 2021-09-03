@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-init-configmap
+data:
+  init.sql: |
+    CREATE DATABASE IF NOT EXISTS django;
+    CREATE USER 'django'@'django-mysql56' IDENTIFIED BY 'django';
+    GRANT ALL PRIVILEGES ON *.* TO 'django'@'django-mysql56';
+    FLUSH PRIVILEGES;

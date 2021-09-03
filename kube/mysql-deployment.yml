@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: django-mysql55
+  name: django-mysql56
   labels:
     app: django
 spec:
@@ -28,7 +28,7 @@ spec:
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: django-mysql55
+  name: django-mysql56
   labels:
     app: django
 spec:
@@ -66,7 +66,15 @@ spec:
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
+        - name: sql-init-config
+          mountPath: /docker-entrypoint-initdb.d
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
           claimName: mysql-pv-claim
+      - name: sql-init-config
+        configMap:
+          name: db-init-configmap
+          items:
+            - key: init.sql
+              path: init.sql

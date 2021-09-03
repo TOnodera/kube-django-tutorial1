@@ -25,12 +25,14 @@ spec:
               cpu: "0.4"
           env:
           - name: DB_HOST
-            value: django-mysql55
+            value: django-mysql56
           - name: DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: mysql-pass
                 key: password
+          - name: DB_USER
+            value: django
           ports:
             - containerPort: 8000
               name: django
