@@ -1,10 +1,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: db-init-configmap
+  name: init-configmap
 data:
   init.sql: |
     CREATE DATABASE IF NOT EXISTS django;
-    CREATE USER 'django'@'django-mysql56' IDENTIFIED BY 'django';
-    GRANT ALL PRIVILEGES ON *.* TO 'django'@'django-mysql56';
+    CREATE USER 'django'@'%' IDENTIFIED BY 'django';
+    GRANT ALL PRIVILEGES ON django.* TO 'django'@'%';
     FLUSH PRIVILEGES;
+  init.django: |
+    cd /home/python/app;
+    python manage.py makemigrations && python manage.py migrate

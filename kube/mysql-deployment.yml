@@ -74,7 +74,7 @@ spec:
           claimName: mysql-pv-claim
       - name: sql-init-config
         configMap:
-          name: db-init-configmap
+          name: init-configmap
           items:
             - key: init.sql
               path: init.sql

@@ -36,6 +36,17 @@ spec:
           ports:
             - containerPort: 8000
               name: django
+          volumeMounts:
+            - name: init-django
+              mountPath: /home/python/app/entrypoint.sh
+      volumes:
+      - name: init-django
+        configMap:
+          name: init-configmap
+          items:
+            - key: init.django
+              path: init.django
+
 ---
 kind: Service
 apiVersion: v1
