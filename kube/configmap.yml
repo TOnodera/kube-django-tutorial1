@@ -5,8 +5,8 @@ metadata:
 data:
   init.sql: |
     CREATE DATABASE IF NOT EXISTS django;
-    CREATE USER 'django'@'%' IDENTIFIED BY 'django';
-    GRANT ALL PRIVILEGES ON django.* TO 'django'@'%';
+    CREATE USER 'django'@'django-mysql56' IDENTIFIED BY 'django';
+    GRANT ALL PRIVILEGES ON django.* TO 'django'@'django-mysql56';
     FLUSH PRIVILEGES;
   init.django: |
     cd /home/python/app;
