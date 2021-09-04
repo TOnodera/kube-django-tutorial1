@@ -25,24 +25,27 @@ spec:
               cpu: "0.4"
           env:
           - name: DB_HOST
-            value: django-mysql56
+            value: "django-mysql56"
           - name: DB_NAME
-            value: django
+            value: "django"
           - name: DB_PORT
-            value: 3306
+            value: "3306"
+          - name: DB_USER
+            value: "django"
           - name: DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: mysql-pass
                 key: password
-          - name: DB_USER
-            value: django
           ports:
             - containerPort: 8000
               name: django
           volumeMounts:
             - name: init-django
-              mountPath: /home/python/app/entrypoint.sh
+              mountPath: /home/python/app/init
+          command: ["/bin/bash"]
+          args: ["/home/python/app/init/init.django"]
+          
       volumes:
       - name: init-django
         configMap:

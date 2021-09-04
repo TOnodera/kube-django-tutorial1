@@ -12,4 +12,4 @@ RUN useradd -u 1000 -o python && \
 COPY . .
 EXPOSE 8000/tcp
 
-CMD [ "python","/home/python/app/manage.py","runserver","0:8000"]
+CMD ["python","manage.py","runserver"]

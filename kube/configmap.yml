@@ -9,5 +9,5 @@ data:
     GRANT ALL PRIVILEGES ON django.* TO 'django'@'%';
     FLUSH PRIVILEGES;
   init.django: |
-    cd /home/python/app;
-    python manage.py makemigrations && python manage.py migrate
+    #!/bin/bash
+    python manage.py makemigrations && python manage.py migrate && python manage.py runserver;
